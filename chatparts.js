@@ -67,3 +67,7 @@
         }
     }
 }())
+
+$("#chatarea").click(function(e){
+  e.stopPropagation();
+});
