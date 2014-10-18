@@ -1,6 +1,9 @@
-var milkcocoa = new MilkCocoa("https://io-fi1eagrco.mlkcca.com");
+/* milkcocoa定義 */
+var appid = "io-fi1eagrco";
+var milkcocoa = new MilkCocoa("https://"+appid+".mlkcca.com");
 var ds_crush = milkcocoa.dataStore("crush");
 
+/* セリフ定義 */
 var serifs = [
     "痛い！痛いよぉ！",
     "きゃああああああっ！！",
@@ -13,6 +16,7 @@ var serifs = [
     "ふええええええ＞＜"
 ]
 
+/* 崩壊共有 */
 ds_crush.on("send", function(e){ $(document).trigger('click'); });
 ds_crush.on("push", function(e){
     ds_crush.query({}).done(function(e){
@@ -24,7 +28,14 @@ ds_crush.on("push", function(e){
     })
 });
 
-$(document).ready(function() {
+/* チャット準備 */
+window.chatpart.start({
+    host : "https://" + appid + ".mlkcca.com",
+    datastore  : "chat",
+    milkcocoa : milkcocoa
+});
+
+$("div.content").ready(function() {
     ds_crush.query({}).done(function(e){
         var count = e.length;
         $("#num").append(count+"発目");
