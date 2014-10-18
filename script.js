@@ -1,27 +1,26 @@
 var milkcocoa = new MilkCocoa("https://io-fi1eagrco.mlkcca.com");
 var ds_crush = milkcocoa.dataStore("crush");
+
 var serifs = [
     "痛い！痛いよぉ！",
     "きゃああああああっ！！",
     "腕がっ！！腕があああっ！！",
     "もう・・・やめて・・・",
-    "あう",
-    "えう",
-    "ぐっ・・・",
-    "いっ",
-    "ひぎゃ",
-    "ふげ"
+    "ふっかーつ☆",
+    "なかなか痛かったわ・・・",
+    "ぐっ・・・生き返るのも大変なのよっ！",
+    "いっ・・たぁ〜！",
+    "ふええええええ＞＜"
 ]
+
 ds_crush.on("send", function(e){ $(document).trigger('click'); });
 ds_crush.on("push", function(e){
     ds_crush.query({}).done(function(e){
         var random_serif_num = Math.floor(Math.random()*serifs.length);
         setTimeout(function(){
-            alert(serifs[random_serif_num]);
-        }, 1600);
-        setTimeout(function(){
+            $("p#comment").html(serifs[random_serif_num]);
             $("p#num").html(e.length+"発目");
-        }, 4500);
+        }, 1600);
     })
 });
 
